@@ -16,4 +16,4 @@ class GameOfLifeTest(unittest.TestCase):
         output = fake_stdout.getvalue()
         fake_stdout.close()
 
-        self.assertEqual(output, "0,0")
+        self.assertEqual(output.strip(), "0,0")
