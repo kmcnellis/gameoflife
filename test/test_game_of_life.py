@@ -33,11 +33,17 @@ class GameOfLifeTest(unittest.TestCase):
             Case("single square", [(1, 1)], 1, 1, 0),
             Case("line should survive", [
                  (-10, 0), (-9, 0), (-8, 0)], -9, 0, 1),
+             #  0 1 2
+             #0 . . .
+             #1 0 0 .
+             #2 X 0 .
             Case("3 neigbors should make it alive",
-                 [(1, 0), (1, 1), (2, 1)], 1, 2, 1)
-            # . 0 .
-            # . 0 X
-            # . 0 .
+                 [(1, 0), (1, 1), (2, 1)], 2, 0, 1),
+            #  0 1 2
+            #0 . 0 0
+            #1 0 0 X
+            #2 . 0 .
+            Case("4 neigbors should die", [(0,1), (0,2),(1,0),(1,1),(2,1), (1,2)], 1, 2, 0)
         ]
         for t in tests:
             # set the state

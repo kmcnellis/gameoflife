@@ -25,6 +25,8 @@ class GameOfLife():
             if count > 4:
                 return 0
             return 1
+        if count == 3:
+            return 1
         return 0
 
 
