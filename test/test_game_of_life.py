@@ -43,7 +43,26 @@ class GameOfLifeTest(unittest.TestCase):
             #0 . 0 0
             #1 0 0 X
             #2 . 0 .
-            Case("4 neigbors should die", [(0,1), (0,2),(1,0),(1,1),(2,1), (1,2)], 1, 2, 0)
+            Case("4 neigbors should die", [
+                 (0, 1), (0, 2), (1, 0), (1, 1), (2, 1), (1, 2)], 1, 2, 0),
+            #  0 1 2
+            #0 . . 0
+            #1 . 0 X
+            #2 . . .
+            Case("2 neigbors should survive", [
+                (0, 2),  (1, 1), (1, 2)], 1, 2, 1),
+            #  0 1 2
+            #0 . . 0
+            #1 . 0 X
+            #2 . . .
+            Case("2 neigbors should stay dead", [
+                (0, 2),  (1, 1)], 1, 2, 0),
+            #  0 1 2
+            #0 . . 0
+            #1 . 0 X
+            #2 . . .
+            Case("1 neigbors should die", [
+                (0, 2), (1, 2)], 1, 2, 0)
         ]
         for t in tests:
             # set the state

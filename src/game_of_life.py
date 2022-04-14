@@ -14,15 +14,17 @@ class GameOfLife():
         current_state = 0
         if (x, y) in self.pattern:
             current_state = 1
+        # print("%d,%d is currently %d" % (x, y, current_state))
 
         for (nx, ny) in neighbors:
             if (x+nx, y+ny) in self.pattern:
                 count +=1
+        # print("%d,%d has %d neighbors" % (x, y, count))
 
         if current_state == 1:
             if count < 2:
                 return 0
-            if count > 4:
+            if count >= 4:
                 return 0
             return 1
         if count == 3:
