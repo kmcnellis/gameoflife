@@ -17,3 +17,15 @@ class GameOfLifeTest(unittest.TestCase):
         fake_stdout.close()
 
         self.assertEqual(output.strip(), "0,0")
+
+    def test_square_stay_alive(self):
+        game = GameOfLife()
+        fake_stdout = io.StringIO()
+
+        with contextlib.redirect_stdout(fake_stdout):
+            game.run("0,0 0,1 1,0 1,1")
+
+        output = fake_stdout.getvalue()
+        fake_stdout.close()
+
+        self.assertEqual(output.strip(), "0,0 0,1 1,0 1,1")
