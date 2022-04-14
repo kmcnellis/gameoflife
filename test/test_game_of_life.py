@@ -31,7 +31,13 @@ class GameOfLifeTest(unittest.TestCase):
         fake_stdout = io.StringIO()
         tests = [
             Case("single square", [(1, 1)], 1, 1, 0),
-            Case("should survive", [(-10, 0), (-9,0),(-8,0)], -9, 0, 1)
+            Case("line should survive", [
+                 (-10, 0), (-9, 0), (-8, 0)], -9, 0, 1),
+            Case("3 neigbors should make it alive",
+                 [(1, 0), (1, 1), (2, 1)], 1, 2, 1)
+            # . 0 .
+            # . 0 X
+            # . 0 .
         ]
         for t in tests:
             # set the state
