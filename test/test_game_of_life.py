@@ -6,14 +6,14 @@ from src.game_of_life import GameOfLife
 
 class GameOfLifeTest(unittest.TestCase):
 
-    def test_run_doesnt_do_much(self):
+    def test_dies_by_underpopulation(self):
         game = GameOfLife()
         fake_stdout = io.StringIO()
 
         with contextlib.redirect_stdout(fake_stdout):
-            game.run()
+            game.run("0,0 -1,0 1,0")
 
         output = fake_stdout.getvalue()
         fake_stdout.close()
 
-        self.assertEqual(output, "I don't do much, yet.\n")
+        self.assertEqual(output, "0,0")
